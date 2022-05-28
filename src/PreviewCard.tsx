@@ -1,12 +1,13 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, Img} from 'remotion';
 import './fonts.css';
-import {Swirl} from './Swirl';
+import avatar from './images/andy.png';
 
 const fontFamily = 'Inter';
 
 const absContainer: React.CSSProperties = {
-	backgroundColor: 'white',
+	backgroundColor: '#1F2132',
+	color: '#E8EDF2',
 };
 
 const container: React.CSSProperties = {
@@ -24,43 +25,25 @@ const titleStyle: React.CSSProperties = {
 	marginBottom: 0,
 };
 
-const descriptionStyle: React.CSSProperties = {
-	color: '#61778a',
-	fontSize: '3.2em',
-	margin: 0,
-	marginTop: 20,
-	lineHeight: 1.3,
-	fontWeight: 500,
-	maxWidth: '90%',
-	maxLines: 2,
-	overflow: 'hidden',
-	textOverflow: 'ellipsis',
-	lineClamp: 2,
-};
+const descriptionStyle: React.CSSProperties = {};
 
 const gradientText: React.CSSProperties = {
-	background: 'linear-gradient(to right, black, #666)',
-	WebkitBackgroundClip: 'text',
-	WebkitTextFillColor: 'transparent',
 	fontFamily,
 };
 
-const sloganStyle: React.CSSProperties = {
+const footer: React.CSSProperties = {
+	backgroundColor: '#090D18',
 	position: 'absolute',
-	bottom: 58,
-	right: 100,
-	fontSize: 36,
-	lineHeight: 1.1,
-	fontWeight: 700,
-	textAlign: 'right',
-	whiteSpace: 'pre',
+	bottom: 0,
+	right: 0,
+	left: 0,
+	padding: '68px',
 };
 
 export const PreviewCard: React.FC<{
 	title: string;
-	description: string;
-	slogan: string;
-}> = ({title, description, slogan}) => {
+	name: string;
+}> = ({title, name}) => {
 	return (
 		<AbsoluteFill style={absContainer}>
 			<AbsoluteFill>
@@ -68,12 +51,12 @@ export const PreviewCard: React.FC<{
 					<div style={titleStyle}>
 						<span style={gradientText}>{title}</span>
 					</div>
-					<p style={descriptionStyle}>{description}</p>
-					<div style={sloganStyle}>{slogan}</div>
+
+					<div style={footer}>
+						<Img src={avatar} alt="" />
+						<p style={descriptionStyle}>{name} / somedevsdo.com</p>
+					</div>
 				</div>
-			</AbsoluteFill>
-			<AbsoluteFill>
-				<Swirl />
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);
